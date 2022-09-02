@@ -1,0 +1,14 @@
+*** Levantamento de requisitos S.E.R ***
+
+Dores: 
+
+* Dificuldade em manuntenção e gerenciamento de faltas;
+* Dificuldade em controlar quem entra e quem saí da CGEM;
+* Lugar universal onde se pode passar recados e avisos, pois hoje é feito através de grupos no whatsapp;
+* Lugar onde se pode compartilhar experiências tidas nas aulas ou individuais;
+* Lugar para postagem de estudos;
+* Agenda universal;
+
+Ideia:
+
+Sitema central onde há comunicação direta com clientes através de usuários admnistradores, sistema esse tendo como principalobjetivo facilitar a logística hoje aplicada. Para começo, faz-se necessário haver apenas controle de faltas e de quem entra e saí da CGEM. 
