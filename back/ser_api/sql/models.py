@@ -84,3 +84,50 @@ class Classroom(Base):
     next_class_day = Column(DateTime)
 
     id_class = Column(Integer, ForeignKey("class.id"))
+
+
+class Notification(Base):
+    __tablename__ = 'notification'
+
+    id = Column(Integer, primary_key=True, index=True)
+    message = Column(String)
+    recurrent = Column(Boolean)
+    notification_date = Column(DateTime)
+    link = Column(String)
+    photo = Column(LargeBinary)
+    notification_week_day = Column(Integer)
+
+
+class NotificationClass(Base):
+    __tablename__ = 'notification_class'
+
+    id = Column(Integer, primary_key=True, index=True)
+    id_notification = Column(Integer, ForeignKey("notification.id"))
+    id_class = Column(Integer, ForeignKey("class.id"))
+
+
+class NotificationClassroom(Base):
+    __tablename__ = 'notification_classroom'
+
+    id = Column(Integer, primary_key=True, index=True)
+    id_notification = Column(Integer, ForeignKey("notification.id"))
+    id_classroom = Column(Integer, ForeignKey("classroom.id"))
+
+
+class Book(Base):
+    __tablename__ = 'book'
+
+    id = Column(Integer, primary_key=True, index=True)
+    book_name = Column(String, unique=True)
+    actual_chapter = Column(Integer)
+    synopsis = Column(String)
+    beginning_date = Column(DateTime)
+    end_date = Column(DateTime)
+
+
+class BookClass(Base):
+    __tablename__ = 'book_class'
+
+    id = Column(Integer, primary_key=True, index=True)
+    id_book = Column(Integer, ForeignKey("book.id"))
+    id_class = Column(Integer, ForeignKey("class.id"))
