@@ -96,6 +96,7 @@ class Notification(Base):
     link = Column(String)
     photo = Column(LargeBinary)
     notification_week_day = Column(Integer)
+    already_sent = Column(Boolean)
 
 
 class NotificationClass(Base):

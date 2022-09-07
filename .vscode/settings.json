@@ -1,5 +1,5 @@
 {
   "editor.defaultFormatter": "ms-python.python",
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true
+  "editor.formatOnPaste": false
 }
