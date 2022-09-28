@@ -1,4 +1,5 @@
 from datetime import date
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -23,6 +24,18 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class UserUpdate(BaseModel):
+    email: Optional[str] = None
+    password: Optional[str] = None
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    birthday: Optional[date] = None
+    supervision: Optional[str] = None
+    supervision_area: Optional[str] = None
+    phone: Optional[str] = None
+    photo: Optional[bytes] = None
 
 
 class StudentBase(BaseModel):
