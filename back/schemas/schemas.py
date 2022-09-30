@@ -50,12 +50,20 @@ class StudentCreate(StudentBase):
 
 class Student(StudentBase):
     id: int
-    absences: int
-    presences: int
-    replacements: int
+    absences: int | None
+    presences: int | None
+    replacements: int | None
 
     class Config:
         orm_mode = True
+
+
+class StudentUpdate(BaseModel):
+    id_classroom: Optional[int] = None
+    id_class: Optional[int] = None
+    absences: Optional[int] = None
+    presences: Optional[int] = None
+    replacements: Optional[int] = None
 
 
 class CooperatorBase(BaseModel):

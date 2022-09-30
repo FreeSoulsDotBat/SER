@@ -17,7 +17,7 @@ def get_db():
         db.close()
 
 
-@router.post("/user/", response_model=schemas.User)
+@router.post("/user/", status_code=201)
 async def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
     db_user = models.User(email=user.email,
@@ -36,12 +36,12 @@ async def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return {"status": 201}
 
 
-@router.get("/user/{user_id}")
+@router.get("/user/{user_id}", response_model=schemas.User)
 async def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
     return db.query(models.User).get(user_id)
 
 
-@router.put("/user/{user_id}")
+@router.put("/user/{user_id}", status_code=200)
 async def update_user(user_id: int, changes: schemas.UserUpdate, db: Session = Depends(get_db)):
 
     db_user = db.get(models.User, user_id)
@@ -55,14 +55,15 @@ async def update_user(user_id: int, changes: schemas.UserUpdate, db: Session = D
     db.commit()
     db.refresh(db_user)
 
-    return db_user
+    return {"status": 200}
 
 
-@router.delete("/user/{user_id}")
+@router.delete("/user/{user_id}", status_code=204)
 async def delete_user(user_id: int, db: Session = Depends(get_db)):
     db_user = db.get(models.User, user_id)
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
     db.delete(db_user)
     db.commit()
+
     return {"status": 204}
