@@ -44,7 +44,6 @@ async def update_student(student_id: int, changes: schemas.StudentUpdate, db: Se
 
     db.add(db_student)
     db.commit()
-    db.refresh(db_student)
 
     return {"status": 200}
 

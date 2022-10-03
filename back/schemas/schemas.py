@@ -76,12 +76,18 @@ class CooperatorCreate(CooperatorBase):
 
 class Cooperator(CooperatorBase):
     id: int
-    absences: int
-    presences: int
-    replacements: int
+    absences: int | None
+    presences: int | None
+    replacements: int | None
 
     class Config:
         orm_mode = True
+
+
+class CooperatorUpdate(BaseModel):
+    absences: Optional[int] = None
+    presences: Optional[int] = None
+    replacements: Optional[int] = None
 
 
 class CooperatorClassBase(BaseModel):
@@ -98,6 +104,11 @@ class CooperatorClass(CooperatorClassBase):
 
     class Config:
         orm_mode = True
+
+
+class CooperatorClassUpdate(BaseModel):
+    id_cooperator: Optional[int] = None
+    id_class: Optional[int] = None
 
 
 class CooperatorClassroomBase(BaseModel):

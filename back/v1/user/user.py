@@ -32,7 +32,7 @@ async def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
     db.add(db_user)
     db.commit()
-    db.refresh(db_user)
+
     return {"status": 201}
 
 
@@ -53,7 +53,6 @@ async def update_user(user_id: int, changes: schemas.UserUpdate, db: Session = D
 
     db.add(db_user)
     db.commit()
-    db.refresh(db_user)
 
     return {"status": 200}
 
