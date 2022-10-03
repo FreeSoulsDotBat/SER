@@ -127,6 +127,11 @@ class CooperatorClassroom(CooperatorClassroomBase):
         orm_mode = True
 
 
+class CooperatorClassroomUpdate(BaseModel):
+    id_cooperator: Optional[int] = None
+    id_classroom: Optional[int] = None
+
+
 class ClassBase(BaseModel):
     beginning_date: date
     semester: int
