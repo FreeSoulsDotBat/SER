@@ -134,7 +134,7 @@ class CooperatorClassroomUpdate(BaseModel):
 
 class ClassBase(BaseModel):
     beginning_date: date
-    semester: int
+    semester: int | None = 1
     number_students: int
     number_cooperators: int
     number_classrooms: int
@@ -151,6 +151,14 @@ class Class(ClassBase):
         orm_mode = True
 
 
+class ClassUpdate(BaseModel):
+    beginning_date: Optional[date] = None
+    semester: Optional[int] = None
+    number_students: Optional[int] = None
+    number_cooperators: Optional[int] = None
+    number_classrooms: Optional[int] = None
+
+
 class ClassroomBase(BaseModel):
     floor: int
     classroom_number: int
@@ -158,7 +166,6 @@ class ClassroomBase(BaseModel):
     photo: bytes | None
     last_class_day: date
     next_class_day: date
-
     id_class: int
 
 
@@ -171,6 +178,16 @@ class Classroom(ClassroomBase):
 
     class Config:
         orm_mode = True
+
+
+class ClassroomUpdate(BaseModel):
+    floor: Optional[int] = None
+    classroom_number: Optional[int] = None
+    number_students: Optional[int] = None
+    photo: Optional[bytes] = None
+    last_class_day: Optional[date] = None
+    next_class_day: Optional[date] = None
+    id_class: Optional[int] = None
 
 
 class NotificationBase(BaseModel):
