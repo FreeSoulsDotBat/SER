@@ -192,7 +192,7 @@ class ClassroomUpdate(BaseModel):
 
 class NotificationBase(BaseModel):
     message: str
-    recurrent: bool
+    recurrent: bool | None = False
     notification_date: date | None
     link: str
     photo: bytes | None
@@ -205,10 +205,20 @@ class NotificationCreate(NotificationBase):
 
 class Notification(NotificationBase):
     id: int
-    already_sent: bool
+    already_sent: bool | None = False
 
     class Config:
         orm_mode = True
+
+
+class NotificationUpdate(BaseModel):
+    message: Optional[str] = None
+    recurrent: Optional[bool] = None
+    notification_date: Optional[date] = None
+    link: Optional[str] = None
+    photo: Optional[bytes] = None
+    notification_week_day: Optional[int] = None
+    already_sent: Optional[bool] = None
 
 
 class NotificationClassBase(BaseModel):
@@ -227,6 +237,11 @@ class NotificationClass(NotificationClassBase):
         orm_mode = True
 
 
+class NotificationClassUpdate(BaseModel):
+    id_notification: Optional[int] = None
+    id_class: Optional[int] = None
+
+
 class NotificationClassroomBase(BaseModel):
     id_notification: int
     id_classroom: int
@@ -241,6 +256,11 @@ class NotificationClassroom(NotificationClassroomBase):
 
     class Config:
         orm_mode = True
+
+
+class NotificationClassroomUpdate(BaseModel):
+    id_notification: Optional[int] = None
+    id_classroom: Optional[int] = None
 
 
 class BookBase(BaseModel):
@@ -262,6 +282,14 @@ class Book(BookBase):
         orm_mode = True
 
 
+class BookUpdate(BaseModel):
+    book_name: Optional[str] = None
+    actual_chapter: Optional[int] = None
+    synopsis: Optional[str] = None
+    beginning_date: Optional[date] = None
+    end_date: Optional[date] = None
+
+
 class BookClassBase(BaseModel):
     id_book: int
     id_class: int
@@ -276,3 +304,8 @@ class BookClass(BookClassBase):
 
     class Config:
         orm_mode = True
+
+
+class BookClassUpdate(BaseModel):
+    id_book: Optional[int] = None
+    id_class: Optional[int] = None

@@ -8,6 +8,11 @@ from v1.user_routes.cooperator_routes.cooperator_classroom_routes import coopera
 from v1.class_routes import class_route
 from v1.classroom_routes import classroom_route
 from v1.user_routes import user_route
+from v1.notification_routes import notification_route
+from v1.notification_routes.notification_class_routes import notification_class_route
+from v1.notification_routes.notification_classroom_routes import notification_classroom_route
+from v1.book_routes import book_route
+from v1.book_routes.book_class_routes import book_class_route
 from models import models
 from db.database import engine
 
@@ -21,6 +26,11 @@ app.include_router(cooperator_class_route.router)
 app.include_router(cooperator_classroom_route.router)
 app.include_router(class_route.router)
 app.include_router(classroom_route.router)
+app.include_router(notification_route.router)
+app.include_router(notification_class_route.router)
+app.include_router(notification_classroom_route.router)
+app.include_router(book_route.router)
+app.include_router(book_class_route.router)
 
 
 def custom_openapi():
