@@ -1,9 +1,10 @@
 import { useTheme } from "@react-navigation/native"
+import { useForm } from "react-hook-form"
 import { Image, StyleSheet, Text, View } from "react-native"
+import { ButtonComponent, TextInputField } from "../../components/"
 
 const viewStyle = StyleSheet.create({
 	flex: 1,
-	justifyContent: "center",
 	height: "100%",
 	width: "100%",
 	alignItems: "center",
@@ -11,9 +12,19 @@ const viewStyle = StyleSheet.create({
 
 export const Login = () => {
 	const { typography } = useTheme()
+	const {
+		control,
+		formState: { errors },
+	} = useForm()
+
 	return (
 		<View style={{ ...viewStyle, backgroundColor: "white" }}>
-			<View style={viewStyle}>
+			<View
+				style={{
+					...viewStyle,
+					justifyContent: "flex-end",
+					marginBottom: 100,
+				}}>
 				<Image
 					source={require("../../assets/images/logo.png")}
 					style={{
@@ -26,10 +37,42 @@ export const Login = () => {
 					Escola de Reis
 				</Text>
 			</View>
-			<View style={{ ...viewStyle, justifyContent: "flex-start" }}>
-				<Text style={{ ...typography.sm, textTransform: "uppercase" }}>
+			<View
+				style={{
+					...viewStyle,
+					justifyContent: "flex-start",
+					width: "90%",
+				}}>
+				<Text
+					style={{
+						...typography.sm,
+						textTransform: "uppercase",
+						marginBottom: 32,
+					}}>
 					Bem-vindo
 				</Text>
+				<TextInputField
+					control={control}
+					name="email"
+					errors={errors.email}
+					label={"E-mail"}
+					placeholder={"exemplo@gmail.com"}
+					style={{ width: "100%", marginBottom: 20 }}
+				/>
+				<TextInputField
+					control={control}
+					name="password"
+					errors={errors.password}
+					label={"Senha"}
+					placeholder={"*********"}
+					style={{ width: "100%", marginBottom: 20 }}
+				/>
+				<ButtonComponent
+					title="Entrar"
+					variant="primary"
+					size="full"
+					onPress={() => console.warn("pressionado")}
+				/>
 			</View>
 		</View>
 	)
