@@ -1,12 +1,15 @@
 import { useTheme } from "@react-navigation/native"
 import { useForm } from "react-hook-form"
 import { Image, StyleSheet, Text, View } from "react-native"
-import { ButtonComponent, TextInputField } from "../../components/"
+import {
+	BaseView,
+	ButtonComponent,
+	LinkComponent,
+	TextInputField,
+} from "../../components/"
 
 const viewStyle = StyleSheet.create({
 	flex: 1,
-	height: "100%",
-	width: "100%",
 	alignItems: "center",
 })
 
@@ -18,7 +21,7 @@ export const Login = () => {
 	} = useForm()
 
 	return (
-		<View style={{ ...viewStyle, backgroundColor: "white" }}>
+		<BaseView opitionalStyle={{ paddingTop: 100 }}>
 			<View
 				style={{
 					...viewStyle,
@@ -33,7 +36,11 @@ export const Login = () => {
 						maxWidth: "100%",
 					}}
 				/>
-				<Text style={{ ...typography.lg, textTransform: "uppercase" }}>
+				<Text
+					style={{
+						...typography.lg,
+						textTransform: "uppercase",
+					}}>
 					Escola de Reis
 				</Text>
 			</View>
@@ -72,8 +79,18 @@ export const Login = () => {
 					variant="primary"
 					size="full"
 					onPress={() => console.warn("pressionado")}
+					optionalStyles={{ marginBottom: 20 }}
+				/>
+				<LinkComponent
+					text="Esqueci minha senha"
+					onPress={() => console.warn("pressionado2")}
+					optionalStyles={{ marginBottom: 60 }}
+				/>
+				<LinkComponent
+					text="Ainda não tem login? Cadastre-se"
+					onPress={() => console.warn("pressionado2")}
 				/>
 			</View>
-		</View>
+		</BaseView>
 	)
 }

@@ -2,7 +2,13 @@ import { useTheme } from "@react-navigation/native"
 import React, { useEffect, useState } from "react"
 import { StyleSheet, Pressable, Text } from "react-native"
 
-export const ButtonComponent = ({ title, variant, size, ...rest }) => {
+export const ButtonComponent = ({
+	title,
+	variant,
+	size,
+	optionalStyles,
+	...rest
+}) => {
 	const { colors, typography } = useTheme()
 
 	const buttonTemplateStyles = StyleSheet.create({
@@ -63,6 +69,7 @@ export const ButtonComponent = ({ title, variant, size, ...rest }) => {
 			style={{
 				...buttonSize,
 				...templateStyle,
+				...optionalStyles,
 			}}
 			{...rest}>
 			<Text style={{ ...fontSize, color: "white" }}>{title}</Text>
